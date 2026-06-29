@@ -56,8 +56,8 @@ def play_game():
     mistakes = 0
     print("Welcome to Snowman Meltdown!")
     display_game_state(mistakes, secret_word, guessed_letters)
-    print("Secret word selected: " + secret_word)  # for testing, later remove this line
-    
+
+
 
     while True:
     # For now, simply prompt the user once:
@@ -66,13 +66,13 @@ def play_game():
         guessed_letters.append(guess)
         display_game_state(mistakes, secret_word, guessed_letters)
 
-        if guess in secret_word:
-            print("Congrats! You saved the snowman!")
-            break
-        if round_count == 4:
+        if mistakes == 4:
             print("ups, snowman dead.")
             break
-        round_count += 1
+        if guess not in secret_word:
+            mistakes += 1
+
+
 
 if __name__ == "__main__":
     play_game()
