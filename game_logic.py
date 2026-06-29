@@ -40,6 +40,7 @@ def play_game():
             continue
         if not isinstance(guess, str) or not guess.isalpha():
             print('Sorry not a valid input.')
+            continue
 
         print("You guessed:", guess)
         if guess not in secret_word:
