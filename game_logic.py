@@ -35,11 +35,17 @@ def play_game():
     while True:
         # For now, simply prompt the user once:
         guess = input("Guess a letter: ").lower()
+        if len(guess) > 1:
+            print('Sorry, too many characters.')
+            continue
+        if not isinstance(guess, str) or not guess.isalpha():
+            print('Sorry not a valid input.')
+
         print("You guessed:", guess)
         if guess not in secret_word:
             mistakes += 1
         if mistakes == 4:
-            print("ups, snowman dead.")
+            print("ups, snowman kaputt.")
             break
         if guess in secret_word:
             guessed_letters.append(guess)
