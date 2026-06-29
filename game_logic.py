@@ -47,17 +47,19 @@ def play_game():
             mistakes += 1
         if mistakes == 4:
             print("ups, snowman kaputt.")
-            if not replay():
-                break
+            break
         if guess in secret_word:
             guessed_letters.append(guess)
         display_game_state(mistakes, secret_word, guessed_letters)
 
         if len(set(guessed_letters)) == len(set(secret_word)):
             print('you saved the Snowman!')
-            if not replay():
-                break
+            break
 
-def replay():
+def is_replay():
+    """
+    ask user input whether to replay game
+    :return: boolean
+    """
     return input('Want to play another round?(y/*)?: ').lower() not in ('y', 'yes')
 
