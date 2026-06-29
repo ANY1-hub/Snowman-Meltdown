@@ -11,6 +11,13 @@ def get_random_word():
     return random.choice(WORDS)
 
 def display_game_state(mistakes, secret_word, guessed_letters):
+    """
+    displays game state (how melted the snowman is
+    :param mistakes: mistakes made sofar (counter)
+    :param secret_word: word to be guessed (str)
+    :param guessed_letters: list of letters used so far
+    """
+
     print(STAGES[mistakes])
     display_word = ""
 
@@ -24,16 +31,17 @@ def display_game_state(mistakes, secret_word, guessed_letters):
 
 
 def play_game():
+    """
+    moderates the game flow, asks for user input, validates input
+    :return:
+    """
     secret_word = get_random_word()
     guessed_letters = []
     mistakes = 0
     print("Welcome to Snowman Meltdown!")
     display_game_state(mistakes, secret_word, guessed_letters)
 
-
-
     while True:
-        # For now, simply prompt the user once:
         guess = input("Guess a letter: ").lower()
         if len(guess) > 1:
             print('Sorry, too many characters.')
